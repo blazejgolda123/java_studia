@@ -108,7 +108,7 @@ public class HelloController {
         z.addZdarzenieZZadaniami(HelloController.liczba_maszyn, HelloController.liczba_zadan, HelloController.wagi_zadan, wynik);
 
         label.setText(dajWynikJakoString(wynik));
-        //z.exportDataToCsv("C:\\Users\\Blazej\\Desktop\\exported_data.csv");
+        z.exportDataToCsv("C:\\Users\\Blazej\\Desktop\\exported_data.csv");
     }
 
 

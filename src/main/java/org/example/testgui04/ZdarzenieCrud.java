@@ -98,11 +98,14 @@ public class ZdarzenieCrud {
             // Pobranie danych z tabel
             String selectZdarzeniaQuery = "SELECT * FROM zdarzenie";
             String selectZadaniaQuery = "SELECT * FROM zadanie";
+            String selectWykonanieQuery = "SELECT * FROM wykonanie";
 
             try (PreparedStatement statementZdarzenia = conn.prepareStatement(selectZdarzeniaQuery);
                  PreparedStatement statementZadania = conn.prepareStatement(selectZadaniaQuery);
+                 PreparedStatement statementWykonania = conn.prepareStatement(selectWykonanieQuery);
                  ResultSet resultSetZdarzenia = statementZdarzenia.executeQuery();
-                 ResultSet resultSetZadania = statementZadania.executeQuery()) {
+                 ResultSet resultSetZadania = statementZadania.executeQuery();
+                 ResultSet resultSetWykonania = statementWykonania.executeQuery()) {
 
                 // Zapis do pliku CSV
                 try (Writer writer = new FileWriter(outputFile)) {
@@ -129,6 +132,19 @@ public class ZdarzenieCrud {
 
                         writer.write(String.format("%s,%d,%s\n", idZadania, wagaZadania, idZdarzenia));
                     }
+
+                    // Zapis danych z tabeli wykonanie
+                    writer.write("\n");
+                    writer.write("id_wykonania,numer_maszyny,lp,id_zadania\n");
+
+                    while (resultSetWykonania.next()) {
+                        String idWykonania = resultSetWykonania.getString("id");
+                        int numerMaszyny = resultSetWykonania.getInt("numer_maszyny");
+                        int lp = resultSetWykonania.getInt("lp");
+                        String idZadania = resultSetWykonania.getString("id_zadania");
+
+                        writer.write(String.format("%s,%d,%d,%s\n", idWykonania, numerMaszyny, lp, idZadania));
+                    }
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
@@ -142,38 +158,4 @@ public class ZdarzenieCrud {
 
 
 }
-//https://localhost/phpmyadmin/
 
-//    CREATE TABLE zdarzenie (
-//            id CHAR(36) PRIMARY KEY,
-//    liczba_maszyn INT,
-//    wynik INT,
-//    data_eksperymentu TIMESTAMP
-//);
-//
-//    CREATE TABLE zadanie (
-//            id CHAR(36) PRIMARY KEY,
-//    waga_zadania INT,
-//    id_zdarzenia CHAR(36),
-//    FOREIGN KEY (id_zdarzenia) REFERENCES zdarzenie(id)
-//            );
-
-//    CREATE TABLE wykonanie (
-//            id CHAR(36) PRIMARY KEY,
-//            numer_maszyny INT,
-//            lp INT,
-//            id_zadania CHAR(36),
-//    FOREIGN KEY (id_zadania) REFERENCES zadanie(id)
-//            );
-
-//    INSERT INTO zdarzenie (id, liczba_maszyn, data_eksperymentu)
-//    VALUES (UUID(), 100, CURRENT_TIMESTAMP());
-
-//select
-//    *
-//from zdarzenie z
-//left join zadanie zad on z.id = zad.id_zdarzenia
-//;
-
-//delete from zadania;
-//delete from zdarzenie;
