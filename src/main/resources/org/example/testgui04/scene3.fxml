@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="556.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.testgui04.HelloController">
+   <children>
+      <Button layoutX="169.0" layoutY="98.0" mnemonicParsing="false" onAction="#oblicz_algorytmem" prefHeight="63.0" prefWidth="119.0" text="Oblicz algorytmem" />
+      <Label layoutX="182.0" layoutY="23.0" prefHeight="75.0" prefWidth="93.0" text="Witamy">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Label fx:id="label" layoutX="169.0" layoutY="223.0" prefHeight="250.0" prefWidth="119.0">
+         <font>
+            <Font size="13.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

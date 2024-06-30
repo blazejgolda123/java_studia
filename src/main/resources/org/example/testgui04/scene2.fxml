@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<?import org.example.testgui04.HelloController?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="358.0" prefWidth="317.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.testgui04.HelloController">
+   <children>
+      <Label layoutX="90.0" layoutY="85.0" prefHeight="66.0" prefWidth="139.0" text="Podaj wage dla zadania" />
+      <TextField fx:id="twaga" layoutX="84.0" layoutY="179.0" />
+      <Button layoutX="125.0" layoutY="247.0" mnemonicParsing="false" onAction="#wczytaj_i_wroc_albo_znowu_okienko_do_wczytania" prefHeight="44.0" prefWidth="68.0" text="Dalej" />
+   </children>
+</AnchorPane>
